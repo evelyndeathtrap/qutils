@@ -11,7 +11,7 @@
 0a\r\bundo
 0srandseed
 1dstopquit
-0textfail
+0ftextfail
 1gputc\t
 0heth0fixd
 0jbluenear
