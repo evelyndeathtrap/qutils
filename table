@@ -56,12 +56,15 @@
 0)tion
 1_wrld
 0+gain
-1{what
-0}plis
+1{body
+0}mind
 1|wall
 0:life
-1"beat
+1"songbeat
 0<small
 1>size
 0?hold
-0\0stopdone
+0\0stop
+1 freedone
+0\gchimeding
+0\6entropy
