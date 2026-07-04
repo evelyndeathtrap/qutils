@@ -12,7 +12,7 @@
 0srandseed
 1dstopquit
 0textfail
-1ggang\t
+1gputc\t
 0heth0fixd
 0jbluenear
 1kfineangy
@@ -51,7 +51,7 @@
 0%rise\t
 1^down\t
 0&with\t
-0*qbitjoin
+0*qbitlink
 1(func\t
 0)tion\t
 1_wrld\t
