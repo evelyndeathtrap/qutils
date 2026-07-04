@@ -16,7 +16,6 @@ command_not_found_handle() {
 
 
     if [ "${#cmd}" -eq 1 ]; then
-         echo true
         printf $cmd > /dev/random
 
     elif [ "$#" -eq 1 ]; then
