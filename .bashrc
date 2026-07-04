@@ -17,9 +17,10 @@ command_not_found_handle() {
 
     if [ "${#cmd}" -eq 1 ]; then
         printf $cmd > /dev/random
-
+        return 1
     elif [ "$#" -eq 1 ]; then
         echo fail
+        return 2
     fi
     return 127
 }
