@@ -18,16 +18,14 @@ command_not_found_handle() {
 
     if [ $? -eq 0 ]; then
         echo $ln
-        return 127
     elif [ "${#cmd}" -eq 1 ]; then
         printf $cmd > /dev/random
-
     elif [ "$#" -eq 1 ]; then
         echo fail
-        return 1
     else
         echo sorry
-        reeturn 2
     fi
     return 127
 }
+
+
