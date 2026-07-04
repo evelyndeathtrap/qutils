@@ -1,5 +1,5 @@
   GNU nano 9.1                        .bashrc                                   
-#
+
 # ~/.bashrc
 #
 
@@ -14,13 +14,20 @@ command_not_found_handle() {
     local cmd="$@"
     length=${cmd}
 
+    ln=$(node -e "try { console.log(eval('$1')) } catch(e) { process.exit(1) }">
 
-    if [ "${#cmd}" -eq 1 ]; then
+    if [ $? -eq 0 ]; then
+        echo $ln
+        return 127
+    elif [ "${#cmd}" -eq 1 ]; then
         printf $cmd > /dev/random
-        return 1
+
     elif [ "$#" -eq 1 ]; then
         echo fail
-        return 2
+        return 1
+    else
+        echo sorry
+        reeturn 2
     fi
     return 127
 }
