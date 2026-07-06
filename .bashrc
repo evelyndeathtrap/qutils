@@ -23,7 +23,7 @@ command_not_found_handle() {
     elif [ "$#" -eq 1 ]; then
         echo fail
     else
-        echo sorry
+        true
     fi
     return 127
 }
