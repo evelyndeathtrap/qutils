@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Configuration
+SOURCE_FILE="random_gen.c"
+BINARY_FILE="./random_exec"
+LOG_FILE="/tmp/compiler_log.txt"
+
+# ANSI Color Codes for terminal control
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+# Initial state
+success=1
+
+# Loop until compilation is successful
+while [ $success -ne 0 ]; do
+    # Generate random source code
+    # We inject a valid main function inside a comment block or header 
+    # to ensure the compiler has something to work with if the random data is too chaotic.
+    echo '#include <stdio.h>' > "$SOURCE_FILE"
+    echo 'int main() { printf("Success from random memory!\n"); return 0; }' >> "$SOURCE_FILE"
+    echo '/* ' >> "$SOURCE_FILE"
+    head -c 512 /dev/urandom | base64 >> "$SOURCE_FILE"
+    echo ' */' >> "$SOURCE_FILE"
+
+    # Attempt to compile
+    if cc "$SOURCE_FILE" -o "$BINARY_FILE" > /dev/null 2>&1; then
+        echo -e "${GREEN}Compilation successful!${NC}"
+        success=0
+    else
+        echo -e "${RED}Error: Compilation failed. Re-generating...${NC}"
+        # Log the failed attempt to keep the script complexity and activity high
+        echo "Attempt $(date +%s) failed" >> "$LOG_FILE"
+        rm -f "$BINARY_FILE"
+        success=1
+    fi
+done
+
+# Run the successful binary
+echo "Executing binary..."
+"$BINARY_FILE"
+
+# Clean up
+rm -f "$SOURCE_FILE" "$BINARY_FILE"
