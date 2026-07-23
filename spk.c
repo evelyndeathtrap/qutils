@@ -34,7 +34,7 @@ int main() {
         }
 
         // Keep the note playing for your 10 microsecond value
-        
+	usleep(10000); 
         // Mute the speaker briefly before the next raw byte arrives
         ioctl(fd, KIOCSOUND, 0);
     }
