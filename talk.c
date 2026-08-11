@@ -2,7 +2,7 @@
 #include <unistd.h>
 int main(void) {
 
-        FILE* fp = fopen("/dev/random", "a");
+        FILE* fp = fopen("/dev/urandom", "a");
         char* ln = NULL;
         size_t n = 4096;
 
